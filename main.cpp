@@ -32,12 +32,14 @@ int main() {
     const char width_decoration = '-';
     const char height_decoration = '|';
 
+    // Authentication
     cout << "Quel est votre numero de compte ? " << endl;
     cin >> account_number;
 
     cout << "Quel est votre nom de famille ? " << endl;
     cin >> account_name;
 
+    // Display of infos
     cout << "Solde de votre compte CHF : " << account_balance_cents / 100 << endl;
     cout << "Taux de change : 1 CHF = " << CHF_to_EUR_change_rate << " Euro" << endl;
     cout << "Frais d'operation : " << tax_rate_cents / 100 << " CHF" << endl;
@@ -45,6 +47,7 @@ int main() {
     cout << "Entrez la somme souhaitée en Euro :" << endl;
     cin >> withdraw_euro;
 
+    // Calculate amount to withdraw
     double withdraw_euro_cents;
     withdraw_euro_cents = withdraw_euro * 100;
 
@@ -53,7 +56,7 @@ int main() {
 
     account_balance_cents -= withdraw_chf_cents + tax_rate_cents;
 
-    // Ticket avec des setw
+    // Ticket with setw
     // http://sdz.tdct.org/sdz/c-les-manipulateurs-de-flux.html
     cout << "Somme CHF : " << withdraw_euro_cents / 100 << ", Solde compte : " << account_balance_cents / 100 << endl << endl;
 
@@ -89,7 +92,7 @@ int main() {
 
     cout << corner_decoration << setfill(width_decoration) << setw(30) << corner_decoration << endl;
 
-    // Ticket brut
+    // Ticket hard-coded
     // cout << endl << "+--------------------------------+" << endl;
     // cout << "|" << endl;
     // cout << "| " << account_name << endl;
