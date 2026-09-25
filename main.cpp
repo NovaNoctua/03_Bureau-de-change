@@ -47,4 +47,19 @@ int main() {
 
     account_balance_cents -= withdraw_chf_cents + tax_rate_cents;
 
+
+    cout << "+--------------------------------+" << endl;
+    cout << "|" << endl;
+    cout << "| " << account_name << endl;
+    cout << "| " << account_number << endl;
+    cout << "|" << endl;
+    cout << "| Somme Euro : " << withdraw_euro_cents / 100 << endl;
+    cout << "| 1CHF en Euro: " << CHF_to_EUR_change_rate << endl;
+    cout << "|" << endl;
+    cout << "| Somme CHF : " << withdraw_chf_cents / 100 << endl;
+    cout << "| Frais : " << tax_rate_cents / 100 << endl;
+    cout << "|" << endl;
+    cout << "| Solde Compte : " << account_balance_cents / 100 << endl;
+    cout << "|" << endl;
+    cout << "+--------------------------------+" << endl;
 }
