@@ -10,6 +10,7 @@ Remarque(s) :
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -25,6 +26,11 @@ int main() {
 
     // Amount to withdraw
     double withdraw_euro;
+
+    // Ticket Frame Decoration
+    const char corner_decoration = '+';
+    const char width_decoration = '-';
+    const char height_decoration = '|';
 
     cout << "Quel est votre numero de compte ? " << endl;
     cin >> account_number;
@@ -47,19 +53,55 @@ int main() {
 
     account_balance_cents -= withdraw_chf_cents + tax_rate_cents;
 
+    // Ticket avec des setw
+    // http://sdz.tdct.org/sdz/c-les-manipulateurs-de-flux.html
+    cout << "Somme CHF : " << withdraw_euro_cents / 100 << ", Solde compte : " << account_balance_cents / 100 << endl << endl;
 
-    cout << "+--------------------------------+" << endl;
-    cout << "|" << endl;
-    cout << "| " << account_name << endl;
-    cout << "| " << account_number << endl;
-    cout << "|" << endl;
-    cout << "| Somme Euro : " << withdraw_euro_cents / 100 << endl;
-    cout << "| 1CHF en Euro: " << CHF_to_EUR_change_rate << endl;
-    cout << "|" << endl;
-    cout << "| Somme CHF : " << withdraw_chf_cents / 100 << endl;
-    cout << "| Frais : " << tax_rate_cents / 100 << endl;
-    cout << "|" << endl;
-    cout << "| Solde Compte : " << account_balance_cents / 100 << endl;
-    cout << "|" << endl;
-    cout << "+--------------------------------+" << endl;
+    cout << corner_decoration << setfill(width_decoration) << setw(30) << corner_decoration << endl;
+    cout << setfill(' ');
+    cout << height_decoration << endl;
+
+    cout << height_decoration << " " << account_name << endl;
+    cout << height_decoration << " " << account_number << endl;
+
+    cout << height_decoration << endl;
+
+    cout << height_decoration  << left << setw(15) << " Somme Euro";
+    cout << right << setw(8) << ": " << withdraw_euro_cents / 100 << endl;
+
+    cout << height_decoration << left << setw(15) << " 1 CHF en Euro";
+    cout << right << setw(8) << ": " << CHF_to_EUR_change_rate << endl;
+
+    cout << height_decoration << endl;
+
+    cout << height_decoration << left << setw(15) << " Somme CHF";
+    cout << right << setw(8) << ": " << withdraw_chf_cents / 100 << endl;
+
+    cout << height_decoration << left << setw(15) << " Frais ";
+    cout << right << setw(8) << ": " << tax_rate_cents / 100 << endl;
+
+    cout << height_decoration << endl;
+
+    cout << height_decoration << left << setw(15) << " Solde Compte ";
+    cout << right << setw(8) << ": " << account_balance_cents / 100 << endl;
+
+    cout << height_decoration << endl;
+
+    cout << corner_decoration << setfill(width_decoration) << setw(30) << corner_decoration << endl;
+
+    // Ticket brut
+    // cout << endl << "+--------------------------------+" << endl;
+    // cout << "|" << endl;
+    // cout << "| " << account_name << endl;
+    // cout << "| " << account_number << endl;
+    // cout << "|" << endl;
+    // cout << "| Somme Euro : " << withdraw_euro_cents / 100 << endl;
+    // cout << "| 1 CHF en Euro: " << CHF_to_EUR_change_rate << endl;
+    // cout << "|" << endl;
+    // cout << "| Somme CHF : " << withdraw_chf_cents / 100 << endl;
+    // cout << "| Frais : " << tax_rate_cents / 100 << endl;
+    // cout << "|" << endl;
+    // cout << "| Solde Compte : " << account_balance_cents / 100 << endl;
+    // cout << "|" << endl;
+    // cout << "+--------------------------------+" << endl;
 }
